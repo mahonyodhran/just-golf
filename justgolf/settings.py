@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "accounts",
+    "courses",
 ]
 
 MIDDLEWARE = [
@@ -52,7 +53,7 @@ WSGI_APPLICATION = "justgolf.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "justgolf.sqlite3",
+        "NAME": BASE_DIR / "jg.sqlite3",
     }
 }
 
