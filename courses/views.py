@@ -1,7 +1,16 @@
 from django.http import HttpResponse
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse
 from .forms import CourseForm
 from .models import Course
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import DeleteView
+from django.urls import reverse_lazy
+
+
+class DeleteView(LoginRequiredMixin, DeleteView):
+    model = Course
+    context_object_name = "course"
+    success_url = reverse_lazy("course-index")
 
 
 def course_index(request):
@@ -14,7 +23,7 @@ def add_course(request):
         form = CourseForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponse("<p>Course Saved!</p>")
+            return render(request, "home.html")
         else:
             return HttpResponse("<p>Info is not Valid</p>")
 
