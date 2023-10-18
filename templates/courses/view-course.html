@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %} View Course {% endblock title %}
+{% block content %}
+<div>
+    <h1>{{ course.name }}</h1>
+    <p>Eircode: {{ course.eircode }}</p>
+
+    <h2>Tees</h2>
+
+    {% if user.is_staff %}
+    <a class="btn btn-primary" href="{% url 'add-tee' %}" role="button">Add Tee</a>
+    {% endif %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Tee</th>
+                <th scope="col">Par</th>
+                <th scope="col">Slope Rating</th>
+                <th scope="col">Yards</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tee in tees %}
+                <tr>
+                    <th scope="row">{{ tee.colour }}</th>
+                    <td>{{ tee.par }}</td>
+                    <td>{{ tee.slope }}</td>
+                    <td>{{ tee.yards }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'course-index' %}">Back to Course List</a>
+</div>
+{% endblock content %}
