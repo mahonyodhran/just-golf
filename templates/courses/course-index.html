@@ -19,7 +19,7 @@
             <tbody>
               {% for course in courses %}
                 <tr>
-                  <th scope="row">{{ course.name }}</th>
+                  <th scope="row"> <a href="{% url 'view-course' course.id %}">{{ course.name }}</a></th>
                   <td>{{ course.eircode }}</td>
                   <td>
                     <form method="post" action="{% url 'delete-course' course.id %}">
