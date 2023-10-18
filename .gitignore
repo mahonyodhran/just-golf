@@ -144,3 +144,4 @@ cython_debug/
 sent_emails/
 jg.sqlite3
 environ.py
+testData.sql
