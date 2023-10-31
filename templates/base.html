@@ -21,7 +21,7 @@
         <li><a href="{% url 'about' %}" class="nav-link px-2 link-dark">About</a></li>
         {% if user.is_authenticated %}
           <li><a href="{% url 'course-index' %}" class="nav-link px-2 link-dark">Courses</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">Scorecards</a></li>
+          <li><a href="{% url 'scorecard-index' %}" class="nav-link px-2 link-dark">Scorecards</a></li>
         {% endif %}
       </ul>
       <div class="col-md-3 text-end">
