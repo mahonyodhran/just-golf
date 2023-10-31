@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %} Add Scorecard {% endblock title %}
+
+{% block content %}
+    <div class="header-bar">
+        <h1>Add Scorecard</h1>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Scorecard</button>
+    </form>
+    <a href="{% url 'scorecard-index' %}">Back to Scorecards</a>
+{% endblock content %}
