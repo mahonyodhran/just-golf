@@ -35,4 +35,6 @@ class Tee (models.Model):
 
     class Meta:
         db_table = "tee"
-    
+        
+    def __str__(self):
+        return self.colour
