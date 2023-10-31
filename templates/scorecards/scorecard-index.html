@@ -1,4 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Hello Scorecards</h1>
+  <section class="container my-5">
+    {% if user.is_authenticated %}
+      <a class="btn btn-primary" href="{% url 'add-scorecard' %}" role="button">Add Scorecard</a>
+    {% endif %}
+    {% if courses %}
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>Recent Scorecards</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for scorecard in scorecards %}
+                <tr>
+                  <th scope="row"> <a href="#">Link To Scorecard</a></th>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    {% else %}
+      <div class="alert alert-warning" role="alert">
+        <strong>No Scorecards!</strong>
+      </div>
+    {% endif %}
+  </section>
 {% endblock content %}
