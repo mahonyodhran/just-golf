@@ -1,11 +1,10 @@
 from django.urls import path
-from . import views
-from .views import DeleteView
+from .views import DeleteView, add_course, add_tee, course_index, view_course
 
 urlpatterns = [
-    path("", views.course_index, name="course-index"),
-    path("add-course", views.add_course, name="add-course"),
+    path("", course_index, name="course-index"),
+    path("add-course", add_course, name="add-course"),
     path('delete-course/<int:pk>/', DeleteView.as_view(), name='delete-course'),
-    path("<int:course_id>/", views.view_course, name="view-course"),
-    path("add-tee", views.add_tee, name="add-tee"),
+    path("<int:course_id>/", view_course, name="view-course"),
+    path("add-tee", add_tee, name="add-tee"),
 ]
