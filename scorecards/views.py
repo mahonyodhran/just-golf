@@ -4,10 +4,14 @@ from django.contrib.auth.decorators import login_required
 from .models import Scorecard
 from .forms import ScorecardForm
 
+
 @login_required
 def scorecard_index(request):
     scorecards = Scorecard.objects.all()
-    return render(request, "scorecards/scorecard-index.html", {"scorecards": scorecards})
+    return render(
+        request, "scorecards/scorecard-index.html", {"scorecards": scorecards}
+    )
+
 
 @login_required
 def add_scorecard(request):

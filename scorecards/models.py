@@ -1,6 +1,7 @@
 from django.db import models
 from courses.models import Course, Tee
 
+
 class Scorecard(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     tee = models.ForeignKey(Tee, on_delete=models.CASCADE)
