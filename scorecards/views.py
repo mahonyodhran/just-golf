@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Scorecard
@@ -30,3 +30,13 @@ def add_scorecard(request):
         }
 
         return render(request, "scorecards/add-scorecard.html", context)
+    
+@login_required
+def view_scorecard(request, scorecard_id):
+    scorecard = get_object_or_404(Scorecard, id=scorecard_id)
+
+    context = {
+        "scorecard": scorecard,
+    }
+
+    return render(request, "scorecards/view-scorecard.html", context)
