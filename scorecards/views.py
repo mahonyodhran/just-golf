@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 from .models import Scorecard
 from .forms import ScorecardForm
 
+@login_required
 def scorecard_index(request):
     scorecards = Scorecard.objects.all()
     return render(request, "scorecards/scorecard-index.html", {"scorecards": scorecards})
 
+@login_required
 def add_scorecard(request):
     if request.method == "POST":
         form = ScorecardForm(request.POST)
