@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %} View Scorecard {% endblock title %}
+{% block content %}
+<div>
+           {{ scorecard.id }}
+           {{ scorecard.course_id}}
+           {{ scorecard.tee_id}}
+</div>
+<a href="{% url 'scorecard-index' %}">Back to Scorecard List</a>
+{% endblock content %}
