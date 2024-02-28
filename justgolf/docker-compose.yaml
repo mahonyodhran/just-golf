@@ -3,6 +3,7 @@ version: '3'
 services:
   db:
     image: postgres:latest
+    container_name: JustGolfContainer_db
     environment:
       POSTGRES_DB: ${DATABASE_NAME}
       POSTGRES_USER: ${DATABASE_USER}
@@ -10,6 +11,7 @@ services:
 
   web:
     build: .
+    container_name: JustGolfContainer_web
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/app
