@@ -17,12 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import render
+from accounts import views as av
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-   # path('accounts/', include('accounts.urls')),
+    #path('accounts/', include('accounts.urls')),
    # path('profiles/', include('profiles.urls')),
    # path('courses/', include('courses.urls')),
    # path('scores/', include('scores.urls')),
     path('', lambda request: render(request, 'index.html'), name='index'),
+    path("register/", av.register, name="register"),
+    path("login/", av.login, name="login"),
 ]
