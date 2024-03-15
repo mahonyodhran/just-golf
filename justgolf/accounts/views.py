@@ -5,15 +5,17 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 
 
-def register(response):
-    if response.method == "POST":
-        form = RegisterForm(response.POST)
+def register(request):
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("/home")
+            return redirect("index")
+        else:
+            return render(request, "accounts/register.html", {"form": form})
     else:
         form = RegisterForm()
-        return render(response, "accounts/register.html", {"form": form})
+        return render(request, "accounts/register.html", {"form": form})
     
 def login_view(request):
     if request.method == 'POST':
