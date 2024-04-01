@@ -1,11 +1,12 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-
+from .models import Golfer
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(max_length=254, help_text='Required. Enter a valid email address.')
+    gender = forms.ChoiceField(choices=Golfer.GENDER_CHOICES, required=False)
+    index = forms.FloatField(required=False)
 
     class Meta:
-        model = User
-        fields = ["username", "email", "password1", "password2"]
+        model = Golfer
+        fields = ["username", "email", "password1", "password2", "gender", "index"]
