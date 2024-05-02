@@ -19,12 +19,6 @@ class RegisterViewTests(TestCase):
         self.assertEqual(response.status_code, 302)  # Redirect after successful registration
         self.assertTrue(Golfer.objects.filter(username='testuser').exists())
 
-    # def test_register_view_post_invalid_form(self):
-    #     data = {}  # Empty data, should fail validation
-    #     response = self.client.post(reverse('register'), data)
-    #     self.assertEqual(response.status_code, 200)  # Should remain on the registration page
-    #     self.assertFormError(response, 'form', 'username', 'This field is required')
-
 class LoginViewTests(TestCase):
     def setUp(self):
         self.user = Golfer.objects.create_user(username='testuser', password='testpassword')
