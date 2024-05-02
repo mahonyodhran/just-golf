@@ -5,12 +5,12 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 
 
-def register(request):
+def register_view(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("index")
+            return redirect('home')
         else:
             return render(request, "accounts/register.html", {"form": form})
     else:
@@ -27,7 +27,7 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, f"Welcome, {username}!")
-                return redirect('home')  # Replace 'home' with the name of your home view
+                return redirect('home')
             else:
                 messages.error(request, "Invalid username or password.")
         else:

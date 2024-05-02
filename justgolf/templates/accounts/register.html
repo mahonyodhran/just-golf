@@ -4,8 +4,21 @@
 
 {% block content %}
     <form method="POST" class="form-group">
-	{% csrf_token %}
-	{{ form.as_p }}
-	<button type="submit" class="btn btn-success">Register</button>
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                <strong>Error(s):</strong>
+                <ul>
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        <button type="submit" class="btn btn-success">Register</button>
+        <a href="{% url 'login' %}">Log In</a>
     </form>
 {% endblock %}

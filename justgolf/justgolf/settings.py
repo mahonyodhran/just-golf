@@ -43,6 +43,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'accounts.middleware.RedirectIfLoggedInMiddleware',
 ]
 
 ROOT_URLCONF = 'justgolf.urls'
@@ -79,6 +80,10 @@ DATABASES = {
         'PORT': os.getenv('DATABASE_PORT'),
     }
 }
+# DATABASES['default'] = {
+#     'ENGINE': 'django.db.backends.sqlite3',
+#     'NAME': ':memory:',  # Use in-memory SQLite database for testing
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -124,4 +129,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+AUTH_USER_MODEL = 'accounts.Golfer'
